@@ -23,6 +23,8 @@ ADB follows a client-server architecture with three components:
 
 
 # Imp Commands
+- adb shell pm list packages (This will show package names )
+- adb shell pm path com.example.myapp ( this will show the path of com.example.myapk )
 - apktool d <apk_file> ( To disassemble apk files )
 - apktool b <decompiled_folder> ( To Reassemble apk files )
 - jadx -d <destination> <source_apk> ( To disassemble apk files ,U can’t reassemble apk files using jadx)
