@@ -20,3 +20,39 @@ ADB follows a client-server architecture with three components:
 - adb shell screenrecord "/sdcard/vidfile.mp4" ( it records the screen and saves the file in vidfile.mp4 )
 - adb shell input tap 738 1695 ( this command basically taps on that specific cordinate  )
 - adb shell input keyevent 4 ( this command clicks the back button in our device "4" is the std key event for back button . STD key events: https://stackoverflow.com/questions/7789826/adb-shell-input-events )
+
+
+# Imp Commands
+- apktool d <apk_file> ( To disassemble apk files )
+- apktool b <decompiled_folder> ( To Reassemble apk files )
+- jadx -d <destination> <source_apk> ( To disassemble apk files ,U can’t reassemble apk files using jadx)
+
+
+# JADX (Java Decompiler)
+- Purpose: Decompiles APKs to Java source code
+- Output: Java .java files
+- Use Case: Reverse engineering apps to analyze their logic
+
+## Features:
+Extracts .dex (Dalvik Executable) files from an APK
+Converts .dex to Java source code
+Allows easy browsing of decompiled Java classes
+Provides a GUI (jadx-gui) for easier exploration
+Best for: Reading and analyzing app logic (not for modification)
+(jadx -d output_folder app.apk)
+
+# APKTool (Smali Decompiler & Rebuilder)
+- Purpose: Decompiles APKs to Smali code & resources, allowing modification and rebuilding
+- Output: Smali (.smali) files, XML resources, and app structure
+- Use Case: Modifying, repackaging, and re-signing APKs
+
+## Features:
+
+Extracts AndroidManifest.xml and other XML resource files
+Converts .dex to Smali code (Android bytecode)
+Can modify and recompile APKs
+Rebuilds APKs after modifications
+Best for: Modifying APKs, patching apps, and translating apps
+Limitation: Smali is harder to read than Java.
+(apktool d app.apk -o output_folder  # Decompile)
+(apktool b output_folder -o new.apk  # Recompile)
